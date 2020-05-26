@@ -26,6 +26,7 @@
   "dependencies": {},
   "devDependencies": {
     "ava": "^3.8.2",
+    "codecov": "^3.7.0",
     "eslint": "^7.1.0",
     "eslint-config-shiwangme": "^1.0.2",
     "husky": "^4.2.5",
@@ -66,6 +67,6 @@
     ]
   },
   "engines": {
-    "node": ">=14.0"
+    "node": ">=12.0"
   }
 }

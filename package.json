@@ -1,9 +1,10 @@
 {
   "name": "z-curve",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stationary Z Curve",
   "main": "src/index.js",
   "scripts": {
+    "benchmark": "node bench.js",
     "test": "nyc ava -vs",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov | codecov",
     "start": "nyc --reporter html ava -vs && open ./.nyc_output/index.html"
@@ -26,11 +27,13 @@
   "dependencies": {},
   "devDependencies": {
     "ava": "^3.8.2",
+    "benchmark": "^2.1.4",
     "codecov": "^3.7.0",
     "eslint": "^7.1.0",
     "eslint-config-shiwangme": "^1.0.2",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.6",
+    "ngeohash": "^0.6.3",
     "nyc": "^15.0.1",
     "prettier": "^2.0.5"
   },
@@ -42,7 +45,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run benchmark && git add README.md && lint-staged"
     }
   },
   "ava": {

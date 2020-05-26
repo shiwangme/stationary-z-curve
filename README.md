@@ -16,13 +16,29 @@ z.decode(z_val);
 
 ## API
 
-### encode(latitude, longitude, scala = 9)
+### encode(latitude, longitude, scala = 0)
 
 Encode a pair of latitude and longitude values into a z-curve.
 
+```js
+const z = require('z-curve');
+
+z.encode(32.05, 118.78333) === 471947;
+```
+
 ### decode(z_value)
 
-Decode a hash string into pair of latitude and longitude values. A javascript object is returned with `latitude` and `longitude` keys.
+Decode a hash string into pair of latitude and longitude values. A javascript object is returned with `lat` and `lng` keys.
+
+```js
+const z = require('z-curve');
+
+z.decode(471947);
+// {
+//   lat: 32.16796875,
+//   lng: 118.65234375
+// }
+```
 
 ## 参考资料
 

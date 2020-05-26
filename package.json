@@ -1,6 +1,6 @@
 {
   "name": "z-curve",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Stationary Z Curve",
   "main": "src/index.js",
   "scripts": {

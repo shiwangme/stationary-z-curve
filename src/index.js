@@ -9,36 +9,29 @@ exports.encode = (latitude, longitude, scala = 0) => {
   assert.ok(scala >= 0, 'Scala >= 0');
   assert.ok(scala <= 7, 'Scala <= 7');
   let result = '';
-  let maxLat = MAX_LAT;
-  let minLat = MIN_LAT;
-  let maxLng = MAX_LNG;
-  let minLng = MIN_LNG;
+  const cursor = {
+    maxLat: MAX_LAT,
+    minLat: MIN_LAT,
+    maxLng: MAX_LNG,
+    minLng: MIN_LNG
+  };
   for (let i = 0; i < 19; i += 1) {
-    if (i % 2 === 1) {
-      // Lat
-      const mid = (maxLat + minLat) / 2;
-      if (latitude > mid) {
-        result += '1';
-        minLat = mid;
-      } else {
-        result += '0';
-        maxLat = mid;
-      }
+    const LatOrLng = i % 2 === 1 ? 'Lat' : 'Lng';
+    const toCheck = LatOrLng === 'Lat' ? latitude : longitude;
+    const mid = (cursor[`max${LatOrLng}`] + cursor[`min${LatOrLng}`]) / 2;
+    if (toCheck > mid) {
+      result += '1';
+      cursor[`min${LatOrLng}`] = mid;
     } else {
-      // Lng
-      const mid = (maxLng + minLng) / 2;
-      if (longitude > mid) {
-        result += '1';
-        minLng = mid;
-      } else {
-        result += '0';
-        maxLng = mid;
-      }
+      result += '0';
+      cursor[`max${LatOrLng}`] = mid;
     }
+    // console.log(result);
+    // console.log(cursor);
   }
-  if (scala === 0) {
-    return parseInt(result, 2);
-  }
-  result += '.';
+  // if (scala === 0) {
+  //   return parseInt(result, 2);
+  // }
+  // result += '.';
   return parseInt(result, 2);
 };

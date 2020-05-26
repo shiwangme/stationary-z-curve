@@ -7,14 +7,16 @@
 ```js
 const z = require('z-curve');
 
-z.encode(lat, lng, precision);
+z.encode(lat, lng, scala);
 
 z.decode(z_val);
 ```
 
+在浏览器中测试： <https://npm.runkit.com/z-curve>
+
 ## API
 
-### encode(latitude, longitude, precision = 9)
+### encode(latitude, longitude, scala = 9)
 
 Encode a pair of latitude and longitude values into a z-curve.
 

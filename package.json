@@ -1,10 +1,12 @@
 {
   "name": "z-curve",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.0",
+  "description": "Stationary Z Curve",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc ava -vs",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov | codecov",
+    "start": "nyc --reporter html ava -vs && open ./.nyc_output/index.html"
   },
   "repository": {
     "type": "git",
@@ -21,9 +23,49 @@
     "url": "https://github.com/shiwangme/stationary-z-curve/issues"
   },
   "homepage": "https://github.com/shiwangme/stationary-z-curve#readme",
+  "dependencies": {},
   "devDependencies": {
+    "ava": "^3.8.2",
     "eslint": "^7.1.0",
     "eslint-config-shiwangme": "^1.0.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.6",
+    "nyc": "^15.0.1",
     "prettier": "^2.0.5"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "ava": {
+    "files": [
+      "test/**/*.js",
+      "!**/_*/*.js",
+      "!**/_*.js"
+    ]
+  },
+  "nyc": {
+    "lines": 80,
+    "check-coverage": true,
+    "reporter": [
+      "text-lcov"
+    ],
+    "report-dir": "./.nyc_output",
+    "exclude": [
+      "test",
+      "test{,-*}.js",
+      "**/*.test.js",
+      "**/__tests__/**"
+    ]
+  },
+  "engines": {
+    "node": ">=14.0"
   }
 }

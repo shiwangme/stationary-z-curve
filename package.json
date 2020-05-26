@@ -1,0 +1,29 @@
+{
+  "name": "z-curve",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shiwangme/stationary-z-curve.git"
+  },
+  "keywords": [
+    "z",
+    "stationary",
+    "curve"
+  ],
+  "author": "Willin Wang",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/shiwangme/stationary-z-curve/issues"
+  },
+  "homepage": "https://github.com/shiwangme/stationary-z-curve#readme",
+  "devDependencies": {
+    "eslint": "^7.1.0",
+    "eslint-config-shiwangme": "^1.0.2",
+    "prettier": "^2.0.5"
+  }
+}

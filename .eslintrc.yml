@@ -1,0 +1,7 @@
+root: true
+extends: shiwangme
+settings:
+  import/core-modules:
+    - '@hapi/joi'
+rules:
+  camelcase: 0

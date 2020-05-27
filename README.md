@@ -51,16 +51,16 @@ z.decode(471947);
 [geohash.js](benchmark/geohash.js)
 
 ```
-Geohash#encode x 3,204,054 ops/sec ±0.39% (88 runs sampled)
-Geohash#decode x 5,061,124 ops/sec ±0.28% (95 runs sampled)
+Geohash#encode x 3,132,778 ops/sec ±0.23% (95 runs sampled)
+Geohash#decode x 4,821,351 ops/sec ±0.37% (95 runs sampled)
 ```
 
 
 [z-curve.js](benchmark/z-curve.js)
 
 ```
-Z#encode x 401,875 ops/sec ±0.28% (93 runs sampled)
-Z#decode x 389,533 ops/sec ±0.24% (93 runs sampled)
+Z#encode x 417,384 ops/sec ±1.03% (96 runs sampled)
+Z#decode x 383,475 ops/sec ±0.31% (92 runs sampled)
 ```
 
 

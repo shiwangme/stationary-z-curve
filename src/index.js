@@ -8,7 +8,7 @@ const MAX_LNG = 180;
 exports.encode = (latitude, longitude, scala = 0) => {
   assert.ok(scala >= 0, 'Scala >= 0');
   assert.ok(scala <= 7, 'Scala <= 7');
-  let result = '';
+  let result = 0;
   const cursor = {
     maxLat: MAX_LAT,
     minLat: MIN_LAT,
@@ -20,10 +20,10 @@ exports.encode = (latitude, longitude, scala = 0) => {
     const toCheck = LatOrLng === 'Lat' ? latitude : longitude;
     const mid = (cursor[`max${LatOrLng}`] + cursor[`min${LatOrLng}`]) / 2;
     if (toCheck > mid) {
-      result += '1';
+      result = (result << 1) + 1;
       cursor[`min${LatOrLng}`] = mid;
     } else {
-      result += '0';
+      result <<= 1;
       cursor[`max${LatOrLng}`] = mid;
     }
     // console.log(result);
@@ -32,8 +32,7 @@ exports.encode = (latitude, longitude, scala = 0) => {
   // if (scala === 0) {
   //   return parseInt(result, 2);
   // }
-  // result += '.';
-  return parseInt(result, 2);
+  return result;
 };
 
 exports.decode = (z) => {

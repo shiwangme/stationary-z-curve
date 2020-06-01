@@ -51,32 +51,32 @@ z.decode(471947);
 [geohash.js](benchmark/geohash.js)
 
 ```
-Geohash#encode(precision=9) x 3,181,497 ops/sec ±0.48% (94 runs sampled)
-Geohash#encode(precision=10) x 3,022,347 ops/sec ±0.44% (91 runs sampled)
-Geohash#encode(precision=11) x 2,775,291 ops/sec ±0.58% (93 runs sampled)
-Geohash#encode(precision=12) x 2,566,356 ops/sec ±0.56% (93 runs sampled)
-Geohash#encode(precision=13) x 2,237,286 ops/sec ±0.31% (87 runs sampled)
-Geohash#encode(precision=14) x 2,079,761 ops/sec ±0.45% (96 runs sampled)
-Geohash#encode(precision=15) x 2,011,565 ops/sec ±0.45% (87 runs sampled)
-Geohash#encode(precision=16) x 1,994,243 ops/sec ±0.36% (91 runs sampled)
-Geohash#encode(precision=17) x 1,919,700 ops/sec ±0.49% (95 runs sampled)
-Geohash#decode(precision=9) x 5,251,890 ops/sec ±0.32% (98 runs sampled)
-Geohash#decode(precision=10) x 4,627,638 ops/sec ±0.47% (94 runs sampled)
-Geohash#decode(precision=11) x 4,112,752 ops/sec ±0.62% (94 runs sampled)
-Geohash#decode(precision=12) x 3,837,541 ops/sec ±0.56% (90 runs sampled)
-Geohash#decode(precision=13) x 3,594,750 ops/sec ±0.53% (92 runs sampled)
-Geohash#decode(precision=14) x 3,362,043 ops/sec ±0.46% (95 runs sampled)
-Geohash#decode(precision=15) x 3,129,069 ops/sec ±0.41% (95 runs sampled)
-Geohash#decode(precision=16) x 2,954,406 ops/sec ±0.51% (95 runs sampled)
-Geohash#decode(precision=17) x 2,786,121 ops/sec ±0.49% (95 runs sampled)
+Geohash#encode(precision=9) x 3,215,635 ops/sec ±0.36% (91 runs sampled)
+Geohash#encode(precision=10) x 2,878,923 ops/sec ±0.67% (95 runs sampled)
+Geohash#encode(precision=11) x 2,682,806 ops/sec ±0.41% (96 runs sampled)
+Geohash#encode(precision=12) x 2,485,485 ops/sec ±0.40% (94 runs sampled)
+Geohash#encode(precision=13) x 2,244,528 ops/sec ±0.41% (95 runs sampled)
+Geohash#encode(precision=14) x 2,097,478 ops/sec ±0.55% (95 runs sampled)
+Geohash#encode(precision=15) x 2,027,248 ops/sec ±0.65% (86 runs sampled)
+Geohash#encode(precision=16) x 1,978,832 ops/sec ±0.34% (98 runs sampled)
+Geohash#encode(precision=17) x 1,896,373 ops/sec ±0.43% (91 runs sampled)
+Geohash#decode(precision=9) x 5,080,911 ops/sec ±0.41% (96 runs sampled)
+Geohash#decode(precision=10) x 4,590,824 ops/sec ±0.50% (93 runs sampled)
+Geohash#decode(precision=11) x 4,096,476 ops/sec ±0.41% (92 runs sampled)
+Geohash#decode(precision=12) x 3,912,653 ops/sec ±0.44% (97 runs sampled)
+Geohash#decode(precision=13) x 3,601,804 ops/sec ±0.49% (93 runs sampled)
+Geohash#decode(precision=14) x 3,375,785 ops/sec ±0.37% (94 runs sampled)
+Geohash#decode(precision=15) x 3,096,618 ops/sec ±0.44% (92 runs sampled)
+Geohash#decode(precision=16) x 2,942,242 ops/sec ±0.53% (92 runs sampled)
+Geohash#decode(precision=17) x 2,754,588 ops/sec ±0.41% (94 runs sampled)
 ```
 
 
 [z-curve.js](benchmark/z-curve.js)
 
 ```
-Z#encode(scale=0) x 30,718,390 ops/sec ±0.38% (95 runs sampled)
-Z#decode(scale=0) x 23,952,369 ops/sec ±0.45% (96 runs sampled)
+Z#encode(scale=0) x 30,013,706 ops/sec ±0.43% (95 runs sampled)
+Z#decode(scale=0) x 23,199,739 ops/sec ±1.22% (92 runs sampled)
 ```
 
 

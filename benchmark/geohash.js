@@ -33,7 +33,7 @@ suite
     geohash.encode(32.05, 118.78333, 17);
   })
   .add('Geohash#decode(precision=9)', () => {
-    geohash.decode('ww8p1r4t8');
+    geohash.decode('wtsqqfx2u');
   })
   .add('Geohash#decode(precision=10)', () => {
     geohash.decode('wtsqqfx2u1');

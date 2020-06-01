@@ -70,7 +70,7 @@ exports.decode = (z) => {
   }
 
   return {
-    lat: (minLat + maxLat) / 2,
-    lng: (minLng + maxLng) / 2
+    latitude: (minLat + maxLat) / 2,
+    longitude: (minLng + maxLng) / 2
   };
 };

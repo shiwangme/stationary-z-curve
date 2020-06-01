@@ -5,10 +5,10 @@ const z = require('..');
 const suite = new Benchmark.Suite();
 
 suite
-  .add('Z#encode', () => {
+  .add('Z#encode(scale=0)', () => {
     z.encode(32.05, 118.78333);
   })
-  .add('Z#decode', () => {
+  .add('Z#decode(scale=0)', () => {
     z.decode(471947);
   })
   .on('cycle', (event) => {

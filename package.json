@@ -45,7 +45,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run benchmark && git add README.md && lint-staged"
+      "pre-commit": "lint-staged"
     }
   },
   "ava": {

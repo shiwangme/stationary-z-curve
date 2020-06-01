@@ -51,19 +51,36 @@ z.decode(471947);
 [geohash.js](benchmark/geohash.js)
 
 ```
-Geohash#encode x 3,132,778 ops/sec ±0.23% (95 runs sampled)
-Geohash#decode x 4,821,351 ops/sec ±0.37% (95 runs sampled)
+Geohash#encode(precision=9) x 3,181,497 ops/sec ±0.48% (94 runs sampled)
+Geohash#encode(precision=10) x 3,022,347 ops/sec ±0.44% (91 runs sampled)
+Geohash#encode(precision=11) x 2,775,291 ops/sec ±0.58% (93 runs sampled)
+Geohash#encode(precision=12) x 2,566,356 ops/sec ±0.56% (93 runs sampled)
+Geohash#encode(precision=13) x 2,237,286 ops/sec ±0.31% (87 runs sampled)
+Geohash#encode(precision=14) x 2,079,761 ops/sec ±0.45% (96 runs sampled)
+Geohash#encode(precision=15) x 2,011,565 ops/sec ±0.45% (87 runs sampled)
+Geohash#encode(precision=16) x 1,994,243 ops/sec ±0.36% (91 runs sampled)
+Geohash#encode(precision=17) x 1,919,700 ops/sec ±0.49% (95 runs sampled)
+Geohash#decode(precision=9) x 5,251,890 ops/sec ±0.32% (98 runs sampled)
+Geohash#decode(precision=10) x 4,627,638 ops/sec ±0.47% (94 runs sampled)
+Geohash#decode(precision=11) x 4,112,752 ops/sec ±0.62% (94 runs sampled)
+Geohash#decode(precision=12) x 3,837,541 ops/sec ±0.56% (90 runs sampled)
+Geohash#decode(precision=13) x 3,594,750 ops/sec ±0.53% (92 runs sampled)
+Geohash#decode(precision=14) x 3,362,043 ops/sec ±0.46% (95 runs sampled)
+Geohash#decode(precision=15) x 3,129,069 ops/sec ±0.41% (95 runs sampled)
+Geohash#decode(precision=16) x 2,954,406 ops/sec ±0.51% (95 runs sampled)
+Geohash#decode(precision=17) x 2,786,121 ops/sec ±0.49% (95 runs sampled)
 ```
 
 
 [z-curve.js](benchmark/z-curve.js)
 
 ```
-Z#encode x 417,384 ops/sec ±1.03% (96 runs sampled)
-Z#decode x 383,475 ops/sec ±0.31% (92 runs sampled)
+Z#encode(scale=0) x 30,718,390 ops/sec ±0.38% (95 runs sampled)
+Z#decode(scale=0) x 23,952,369 ops/sec ±0.45% (96 runs sampled)
 ```
 
 
 ## 参考资料
 
 - GeoHash Node 实现： <https://github.com/sunng87/node-geohash>
+- IEEE 754 工具： <https://baseconvert.com/ieee-754-floating-point>

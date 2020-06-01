@@ -1,33 +1,36 @@
-const assert = require('assert');
-
 const MIN_LAT = -90;
 const MAX_LAT = 90;
 const MIN_LNG = -180;
 const MAX_LNG = 180;
 
-exports.encode = (latitude, longitude, scala = 0) => {
-  assert.ok(scala >= 0, 'Scala >= 0');
-  assert.ok(scala <= 7, 'Scala <= 7');
+exports.encode = (latitude, longitude) => {
   let result = 0;
-  const cursor = {
-    maxLat: MAX_LAT,
-    minLat: MIN_LAT,
-    maxLng: MAX_LNG,
-    minLng: MIN_LNG
-  };
+  let maxLat = MAX_LAT;
+  let minLat = MIN_LAT;
+  let maxLng = MAX_LNG;
+  let minLng = MIN_LNG;
+
   for (let i = 0; i < 19; i += 1) {
-    const LatOrLng = i % 2 === 1 ? 'Lat' : 'Lng';
-    const toCheck = LatOrLng === 'Lat' ? latitude : longitude;
-    const mid = (cursor[`max${LatOrLng}`] + cursor[`min${LatOrLng}`]) / 2;
-    if (toCheck > mid) {
-      result = (result << 1) + 1;
-      cursor[`min${LatOrLng}`] = mid;
+    const isLat = i % 2 === 1;
+    if (isLat) {
+      const mid = (maxLat + minLat) / 2;
+      if (latitude > mid) {
+        result = (result << 1) + 1;
+        minLat = mid;
+      } else {
+        result <<= 1;
+        maxLat = mid;
+      }
     } else {
-      result <<= 1;
-      cursor[`max${LatOrLng}`] = mid;
+      const mid = (maxLng + minLng) / 2;
+      if (longitude > mid) {
+        result = (result << 1) + 1;
+        minLng = mid;
+      } else {
+        result <<= 1;
+        maxLng = mid;
+      }
     }
-    // console.log(result);
-    // console.log(cursor);
   }
   // if (scala === 0) {
   //   return parseInt(result, 2);
@@ -36,24 +39,38 @@ exports.encode = (latitude, longitude, scala = 0) => {
 };
 
 exports.decode = (z) => {
-  const binary = z.toString(2);
-  const cursor = {
-    maxLat: MAX_LAT,
-    minLat: MIN_LAT,
-    maxLng: MAX_LNG,
-    minLng: MIN_LNG
-  };
-  for (let i = 0; i < 19; i += 1) {
-    const LatOrLng = i % 2 === 1 ? 'Lat' : 'Lng';
-    const mid = (cursor[`max${LatOrLng}`] + cursor[`min${LatOrLng}`]) / 2;
-    if (binary[i] === '1') {
-      cursor[`min${LatOrLng}`] = mid;
+  let maxLat = MAX_LAT;
+  let minLat = MIN_LAT;
+  let maxLng = MAX_LNG;
+  let minLng = MIN_LNG;
+
+  let binary = z;
+
+  for (let i = 18; i >= 0; i -= 1) {
+    const bit = binary / (1 << i);
+    if (bit >= 1) {
+      binary -= 1 << i;
+    }
+    const isLat = i % 2 === 1;
+    if (isLat) {
+      const mid = (minLat + maxLat) / 2;
+      if (bit >= 1) {
+        minLat = mid;
+      } else {
+        maxLat = mid;
+      }
     } else {
-      cursor[`max${LatOrLng}`] = mid;
+      const mid = (minLng + maxLng) / 2;
+      if (bit >= 1) {
+        minLng = mid;
+      } else {
+        maxLng = mid;
+      }
     }
   }
+
   return {
-    lat: (cursor.minLat + cursor.maxLat) / 2,
-    lng: (cursor.minLng + cursor.maxLng) / 2
+    lat: (minLat + maxLat) / 2,
+    lng: (minLng + maxLng) / 2
   };
 };

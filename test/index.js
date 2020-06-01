@@ -9,8 +9,8 @@ test('decode', (t) => {
   t.is(
     JSON.stringify(z.decode(471947)),
     JSON.stringify({
-      lat: 32.16796875,
-      lng: 118.65234375
+      latitude: 32.16796875,
+      longitude: 118.65234375
     })
   );
 });

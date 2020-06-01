@@ -3,7 +3,7 @@ const MAX_LAT = 90;
 const MIN_LNG = -180;
 const MAX_LNG = 180;
 
-exports.encode = (latitude, longitude) => {
+exports.encode = (latitude, longitude, scala = 0) => {
   let result = 0;
   let maxLat = MAX_LAT;
   let minLat = MIN_LAT;
@@ -32,10 +32,40 @@ exports.encode = (latitude, longitude) => {
       }
     }
   }
-  // if (scala === 0) {
-  //   return parseInt(result, 2);
-  // }
-  return result;
+  if (scala === 0) {
+    return result;
+  }
+  let result2 = 0;
+  for (let i = 1; i <= scala * 4; i += 1) {
+    const isLat = i % 2 === 1;
+    if (isLat) {
+      const mid = (maxLat + minLat) / 2;
+      if (latitude > mid) {
+        result2 += 2 ** -i;
+        minLat = mid;
+      } else {
+        maxLat = mid;
+      }
+    } else {
+      const mid = (maxLng + minLng) / 2;
+      if (longitude > mid) {
+        result2 += 2 ** -i;
+        minLng = mid;
+      } else {
+        maxLng = mid;
+      }
+    }
+  }
+  const bit = scala.toString(2).padStart(3, '0');
+  for (let i = 31; i < 34; i += 1) {
+    if (bit[i - 31] === '1') {
+      result2 += 2 ** -i;
+    }
+  }
+  if (result === 0) {
+    return `${result2}`;
+  }
+  return `${result}${result2}`.replace('0.', '.');
 };
 
 exports.decode = (z) => {

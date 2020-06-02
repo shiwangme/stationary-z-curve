@@ -10,7 +10,7 @@ exports.encode = (latitude, longitude, scala = 0) => {
   let maxLng = MAX_LNG;
   let minLng = MIN_LNG;
 
-  for (let i = 0; i < 19; i += 1) {
+  for (let i = 0; i < 19 * 2 - 1; i += 1) {
     const isLat = i % 2 === 1;
     if (isLat) {
       const mid = (maxLat + minLat) / 2;
@@ -36,7 +36,7 @@ exports.encode = (latitude, longitude, scala = 0) => {
     return result;
   }
   let result2 = 0;
-  for (let i = 1; i <= scala * 4; i += 1) {
+  for (let i = 1; i <= scala * 2; i += 1) {
     const isLat = i % 2 === 1;
     if (isLat) {
       const mid = (maxLat + minLat) / 2;
@@ -76,7 +76,7 @@ exports.decode = (z) => {
 
   let binary = z;
 
-  for (let i = 18; i >= 0; i -= 1) {
+  for (let i = 36; i >= 0; i -= 1) {
     const bit = binary / (1 << i);
     if (bit >= 1) {
       binary -= 1 << i;

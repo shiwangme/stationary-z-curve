@@ -57,8 +57,8 @@ exports.encode = (latitude, longitude, scala = 0) => {
     }
   }
   const bit = scala.toString(2).padStart(3, '0');
-  for (let i = 31; i < 34; i += 1) {
-    if (bit[i - 31] === '1') {
+  for (let i = 15; i < 17; i += 1) {
+    if (bit[i - 15] === '1') {
       result2 += 2 ** -i;
     }
   }
